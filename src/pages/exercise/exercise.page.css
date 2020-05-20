@@ -1,0 +1,25 @@
+.exercise-wrapper {
+  height: 100%;
+  overflow: hidden;
+}
+
+.topbar {
+  height: 10%;
+}
+
+.listener-area {
+  height: 30%;
+}
+
+.sentence-area {
+  height: 40%;
+  background-color: #8da6ce;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* background-image: linear-gradient(141deg, #bec6c7 0%, #7a8596 51%, #99a6bb 75%); add later */
+  /* change later to remove column direction */
+}
+
+.actions-area {
+}
