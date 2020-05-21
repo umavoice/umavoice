@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-.topbar {
+.topbar-area {
   height: 10%;
 }
 
@@ -22,4 +22,5 @@
 }
 
 .actions-area {
+  height: 20%;
 }
