@@ -14,7 +14,7 @@ export default function Sentence(props) {
         <div className="sentence-to-speech-area">
           <button className="add"></button>
           <span className="sentence-to-speech">{props.sentenceText}</span>
-          <button className="refresh"></button>
+          <button className="new-sentence"></button>
         </div>
       </section>
   );

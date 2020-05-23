@@ -9,7 +9,7 @@ class Exercise extends React.Component {
     <div className="exercise-wrapper">
       <section className="topbar-area"></section>
       <section className="listener-area"></section>
-      <Sentence sentenceText="hello" />
+      <Sentence sentenceText="Nice to meet you" />
       <section className="actions-area"></section>
     </div>);
   }

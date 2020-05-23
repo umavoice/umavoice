@@ -1,5 +1,7 @@
-span {
-  color: white;
+.sentence-to-speech-area {
+  display: flex;
+  justify-content: space-between;
+  height: 5em;
 }
 
 .sentence-to-speech-area button {
@@ -15,4 +17,22 @@ span {
 
 .add {
   background-image: url("../../../../../assets/images/add.svg");
+}
+
+.new-sentence {
+  background-image: url("../../../../../assets/images/refresh.svg");
+}
+
+.sentence-to-speech {
+  background-color: #f2f2f2;
+  width: 60%;
+  max-width: 250px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px #647682;
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-size: 1.4em;
 }
