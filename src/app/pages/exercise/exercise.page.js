@@ -29,10 +29,7 @@ class Exercise extends React.Component {
       <section className="topbar-area"></section>
       <section className="listener-area"></section>
       <Sentence sentenceText="Nice to meet you" results={this.state.results} />
-      {/* <section className="actions-area">
-        <button onClick={this.clickTest}>clickme</button>
-      </section> */}
-      <Actions/>
+      <Actions record={this.clickTest}/>
     </div>);
   }
 }
