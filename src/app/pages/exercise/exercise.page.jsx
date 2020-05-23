@@ -3,18 +3,22 @@ import './exercise.page.css';
 
 import Sentence from './components/sentence/sentence.component.jsx';
 import Actions from './components/actions/actions.component.jsx';
+import SpeechRecognition from './components/speech-recognition';
 
 class Exercise extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      results: [],
+      speechRecognition: new SpeechRecognition()
     };
   }
 
   clickTest = () => {
     let results = this.state.results;
+    const speechRecognition = new SpeechRecognition();
+    speechRecognition.startSpeechToText();
     const randomBoolean = (Math.random() >= 0.5);
     results.push(randomBoolean);
     if (results.length > 3) {
