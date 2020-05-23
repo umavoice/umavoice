@@ -16,10 +16,6 @@ export default function Sentence(props) {
           <button className="new-sentence"></button>
         </div>
         <div className="result-area">
-          {/* <span className="correct"></span>
-          <span className="correct"></span>
-          <span className="incorrect"></span> */}
-
           {results.map((result, index) => {
             if (result) {
               return <span key={index} className="correct"></span>;
