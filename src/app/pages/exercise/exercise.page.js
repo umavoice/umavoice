@@ -2,6 +2,7 @@ import React from 'react';
 import './exercise.page.css';
 
 import Sentence from './components/sentence/sentence.component';
+import Actions from './components/actions/actions.component';
 
 class Exercise extends React.Component {
 
@@ -28,9 +29,10 @@ class Exercise extends React.Component {
       <section className="topbar-area"></section>
       <section className="listener-area"></section>
       <Sentence sentenceText="Nice to meet you" results={this.state.results} />
-      <section className="actions-area">
+      {/* <section className="actions-area">
         <button onClick={this.clickTest}>clickme</button>
-      </section>
+      </section> */}
+      <Actions/>
     </div>);
   }
 }

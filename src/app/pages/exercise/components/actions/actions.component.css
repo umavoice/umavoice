@@ -1,0 +1,34 @@
+.actions-area {
+  height: 20%;
+  width: 100%;
+  background-color: #213131;
+  background-image: linear-gradient(141deg, #2f3535 0%, #1c4444 51%, #213131 75%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actions-area button {
+  height: 6em;
+  width: 8em;
+  border: none;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 44%;
+  background-color: #138c8e;
+  box-shadow: 4px 4px;
+}
+
+.listen {
+  background-image: url("../../../../../assets/images/listening.svg");
+}
+
+.talk {
+  background-image: url("../../../../../assets/images/microphone.svg");
+}
+
+.stop {
+  background-image: url("../../../../../assets/images/stop.svg");
+}
+
