@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Exercise from './pages/exercise/exercise.page'
+import Exercise from './pages/exercise/exercise.page.jsx'
 
 const name = "MyName";
 

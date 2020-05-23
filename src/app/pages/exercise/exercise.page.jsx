@@ -1,8 +1,8 @@
 import React from 'react';
 import './exercise.page.css';
 
-import Sentence from './components/sentence/sentence.component';
-import Actions from './components/actions/actions.component';
+import Sentence from './components/sentence/sentence.component.jsx';
+import Actions from './components/actions/actions.component.jsx';
 
 class Exercise extends React.Component {
 
