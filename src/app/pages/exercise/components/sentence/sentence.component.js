@@ -3,9 +3,8 @@ import './sentence.component.css';
 
 export default function Sentence(props) {
 
-  // const handleChange = (event) => {
-  //   props.setInputText(event.target.value);
-  // }
+  const sentenceText = props.sentenceText;
+  const results = props.results;
 
   return (
       <section className="sentence-area">
@@ -13,13 +12,22 @@ export default function Sentence(props) {
 
         <div className="sentence-to-speech-area">
           <button className="add"></button>
-          <span className="sentence-to-speech">{props.sentenceText}</span>
+          <span className="sentence-to-speech">{sentenceText}</span>
           <button className="new-sentence"></button>
         </div>
         <div className="result-area">
+          {/* <span className="correct"></span>
           <span className="correct"></span>
-          <span className="correct"></span>
-          <span className="incorrect"></span>
+          <span className="incorrect"></span> */}
+
+          {results.map((result, index) => {
+            if (result) {
+              return <span key={index} className="correct"></span>;
+            }
+            else {
+              return <span key={index} className="incorrect"></span>;
+            }
+          })}
         </div>
       </section>
   );

@@ -40,8 +40,8 @@
 .result-area {
   width: 60%;
   max-width: 250px;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 10px auto 0 auto;
 }
 
