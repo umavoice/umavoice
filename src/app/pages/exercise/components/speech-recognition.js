@@ -1,5 +1,6 @@
 export default class SpeechRecognition {
   recognition;
+  forceStop = false;
 
   constructor() {
     const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
@@ -13,18 +14,19 @@ export default class SpeechRecognition {
     this.recognition.lang = "en-US";
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
+    this.recognition.continuous = true;
     this.recognition.start();
   }
 
   stopSpeechToText() {
+    this.forceStop = true;
     this.recognition.abort();
   }
 
   builder() {
     this.recognition.onresult = function (event) {
-      let speechResult = event.results[0][0].transcript.toLowerCase();
-      // console.log("Speech received: " + speechResult);
-      console.log("Confidence: " + event.results[0][0].confidence);
+      let speechResult = event.results[event.results.length -1][0].transcript.toLowerCase();
+      console.log("Confidence: " + event.results[event.results.length -1][0].confidence);
 
       console.log(
         "Speech received: %c" + speechResult,
@@ -33,7 +35,7 @@ export default class SpeechRecognition {
     };
 
     this.recognition.onspeechend = () => {
-    this.recognition.stop();
+      this.recognition.stop();
     };
 
     this.recognition.onerror = (event) => {
@@ -54,6 +56,13 @@ export default class SpeechRecognition {
     this.recognition.onend = (event) => {
       //Fired when the speech recognition service has disconnected.
       console.log("SpeechRecognition.onend");
+      if (this.forceStop) {
+        this.forceStop = false;
+      }
+      else {
+        this.startSpeechToText();
+        console.log("Starting again");
+      }
     };
 
     this.recognition.onnomatch = (event) => {
