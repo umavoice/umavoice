@@ -11,20 +11,29 @@ class Exercise extends React.Component {
     super(props);
     this.state = {
       results: [],
-      speechRecognition: new SpeechRecognition()
+      speechRecognition: new SpeechRecognition(),
+      isRecording: false
     };
   }
 
-  clickTest = () => {
+  startSpeech = () => {
+    const isRecording = true;
+    const speechRecognition = this.state.speechRecognition;
     let results = this.state.results;
-    const speechRecognition = new SpeechRecognition();
     speechRecognition.startSpeechToText();
     const randomBoolean = (Math.random() >= 0.5);
     results.push(randomBoolean);
     if (results.length > 3) {
       results.shift();
     }
-    this.setState({ results });
+    this.setState({ results, isRecording });
+  }
+
+  stopSpeech = () => {
+    const speechRecognition = this.state.speechRecognition;
+    const isRecording = false;
+    speechRecognition.stopSpeechToText();
+    this.setState({ isRecording });
   }
 
   render() {
@@ -33,7 +42,7 @@ class Exercise extends React.Component {
       <section className="topbar-area"></section>
       <section className="listener-area"></section>
       <Sentence sentenceText="Nice to meet you" results={this.state.results} />
-      <Actions record={this.clickTest}/>
+      <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }
 }
