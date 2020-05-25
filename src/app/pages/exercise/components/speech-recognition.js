@@ -1,6 +1,7 @@
 export default class SpeechRecognition {
   recognition;
   forceStop = false;
+  finalSpeechResult = [];
 
   constructor() {
     const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
@@ -20,8 +21,13 @@ export default class SpeechRecognition {
   }
 
   stopSpeechToText() {
+    this.finalSpeechResult = this.recognition.speechResult;
     this.forceStop = true;
     this.recognition.abort();
+  }
+
+  getSpeechResult() {
+    return this.finalSpeechResult;
   }
 
   builder() {
@@ -33,10 +39,6 @@ export default class SpeechRecognition {
       console.log(this.speechResult);
 
       console.log("Confidence: " + confidente);
-      // console.log(
-      //   "Speech received: %c" + this.speechResult,
-      //   "font-family:system-ui;font-size:1rem;font-weight:bold"
-      // );
     };
 
     this.recognition.onspeechend = () => {

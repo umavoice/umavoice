@@ -19,13 +19,15 @@ class Exercise extends React.Component {
   startSpeech = () => {
     const isRecording = true;
     const speechRecognition = this.state.speechRecognition;
-    let results = this.state.results;
     speechRecognition.startSpeechToText();
+
+    let results = this.state.results;
     const randomBoolean = (Math.random() >= 0.5);
     results.push(randomBoolean);
     if (results.length > 3) {
       results.shift();
     }
+
     this.setState({ results, isRecording });
   }
 
@@ -34,6 +36,12 @@ class Exercise extends React.Component {
     const isRecording = false;
     speechRecognition.stopSpeechToText();
     this.setState({ isRecording });
+    const finalSpeechResult = speechRecognition.finalSpeechResult.join(" ");
+
+      console.log(
+        "Final Speech: %c" + finalSpeechResult,
+        "font-family:system-ui;font-size:1rem;font-weight:bold"
+      );
   }
 
   render() {
