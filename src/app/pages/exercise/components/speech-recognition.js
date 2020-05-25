@@ -15,6 +15,7 @@ export default class SpeechRecognition {
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
     this.recognition.continuous = true;
+    this.recognition.speechResult = [];
     this.recognition.start();
   }
 
@@ -25,13 +26,17 @@ export default class SpeechRecognition {
 
   builder() {
     this.recognition.onresult = function (event) {
-      let speechResult = event.results[event.results.length -1][0].transcript.toLowerCase();
-      console.log("Confidence: " + event.results[event.results.length -1][0].confidence);
+      
+      const speechResult = event.results[event.results.length -1][0].transcript.toLowerCase();
+      const confidente = event.results[event.results.length -1][0].confidence
+      this.speechResult.push(...speechResult.trim().split(" "));
+      console.log(this.speechResult);
 
-      console.log(
-        "Speech received: %c" + speechResult,
-        "font-family:system-ui;font-size:1rem;font-weight:bold"
-      );
+      console.log("Confidence: " + confidente);
+      // console.log(
+      //   "Speech received: %c" + this.speechResult,
+      //   "font-family:system-ui;font-size:1rem;font-weight:bold"
+      // );
     };
 
     this.recognition.onspeechend = () => {
