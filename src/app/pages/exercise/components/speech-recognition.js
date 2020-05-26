@@ -26,8 +26,8 @@ export default class SpeechRecognition {
     this.recognition.abort();
   }
 
-  getSpeechResult() {
-    return this.finalSpeechResult;
+  getFinalSpeech() {
+    return this.finalSpeechResult.join(" ");
   }
 
   builder() {

@@ -17,31 +17,41 @@ class Exercise extends React.Component {
   }
 
   startSpeech = () => {
-    const isRecording = true;
     const speechRecognition = this.state.speechRecognition;
     speechRecognition.startSpeechToText();
 
-    let results = this.state.results;
-    const randomBoolean = (Math.random() >= 0.5);
-    results.push(randomBoolean);
-    if (results.length > 3) {
-      results.shift();
-    }
-
-    this.setState({ results, isRecording });
+    const isRecording = true;
+    this.setState({ isRecording });
   }
 
   stopSpeech = () => {
     const speechRecognition = this.state.speechRecognition;
-    const isRecording = false;
     speechRecognition.stopSpeechToText();
-    this.setState({ isRecording });
-    const finalSpeechResult = speechRecognition.finalSpeechResult.join(" ");
 
-      console.log(
-        "Final Speech: %c" + finalSpeechResult,
-        "font-family:system-ui;font-size:1rem;font-weight:bold"
-      );
+    const isRecording = false;
+    this.setState({ isRecording });
+    this.setResult();
+  }
+
+  setResult = () => {
+    const speechRecognition = this.state.speechRecognition;
+    const finalSpeech = speechRecognition.getFinalSpeech();
+
+    console.log(
+      "Final Speech: %c" + finalSpeech,
+      "font-family:system-ui;font-size:1rem;font-weight:bold"
+    );
+
+    const expectedSentence = "Nice to meet you";
+    const resultValue = (finalSpeech.toLowerCase() === expectedSentence.toLowerCase() );
+
+    let results = this.state.results;
+    results.push(resultValue);
+    if (results.length > 3) {
+      results.shift();
+    }
+
+    this.setState({ results });
   }
 
   render() {
