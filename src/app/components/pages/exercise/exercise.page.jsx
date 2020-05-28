@@ -1,9 +1,9 @@
 import React from 'react';
 import './exercise.page.css';
 
-import Sentence from './components/sentence/sentence.component.jsx';
-import Actions from './components/actions/actions.component.jsx';
-import SpeechRecognition from './components/speech-recognition-web-api';
+import Sentence from './sentence/sentence.component.jsx';
+import Actions from './actions/actions.component.jsx';
+import SpeechRecognition from '../../../components/speech-recognition-web-api/speech-recognition-web-api.component';
 
 class Exercise extends React.Component {
 
