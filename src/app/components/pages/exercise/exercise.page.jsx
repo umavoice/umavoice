@@ -4,6 +4,7 @@ import './exercise.page.css';
 import Sentence from './sentence/sentence.component.jsx';
 import Actions from './actions/actions.component.jsx';
 import SpeechRecognition from '../../../components/speech-recognition-web-api/speech-recognition-web-api.component';
+import Record from '../../record/record.component';
 
 class Exercise extends React.Component {
 
@@ -11,26 +12,39 @@ class Exercise extends React.Component {
     super(props);
     this.state = {
       results: [],
+      record: new Record(),
       speechRecognition: new SpeechRecognition(),
       isRecording: false
     };
   }
 
   startSpeech = () => {
-    const speechRecognition = this.state.speechRecognition;
-    speechRecognition.startSpeechToText();
+    // const speechRecognition = this.state.speechRecognition;
+    // speechRecognition.startSpeechToText();
 
+    // const isRecording = true;
+    // this.setState({ isRecording });
+
+    const record = this.state.record;
+    record.micCue();
     const isRecording = true;
     this.setState({ isRecording });
   }
 
   stopSpeech = () => {
-    const speechRecognition = this.state.speechRecognition;
-    speechRecognition.stopSpeechToText();
+    // const speechRecognition = this.state.speechRecognition;
+    // speechRecognition.stopSpeechToText();
 
+    // const isRecording = false;
+    // this.setState({ isRecording });
+    // this.setResult();
+
+    const record = this.state.record;
+    record.micStop();
+    const file = record.mountFile();
+    console.log(file);
     const isRecording = false;
     this.setState({ isRecording });
-    this.setResult();
   }
 
   setResult = () => {

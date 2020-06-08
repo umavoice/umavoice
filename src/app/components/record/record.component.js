@@ -53,7 +53,6 @@ export default class Record {
 
   mountFile() {
     const blob = new Blob(this.chunks, { type: "audio/webm; codecs=opus" });
-    console.log(blob);
     const file = new File([blob], "webAudio.webm", {
       type: "audio/webm"
     });
