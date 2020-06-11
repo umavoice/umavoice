@@ -1,7 +1,7 @@
 import React from 'react';
 import './actions.component.css';
 
-export default function Actions(props) {
+export default function Actions(props: any) {
 
   const record = props.record;
   const stop = props.stop;

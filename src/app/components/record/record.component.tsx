@@ -1,13 +1,19 @@
+declare global {
+    interface Window {
+        streamReference: any;
+    }
+}
+
 export default class Record {
-  mediaRecorder;
-  chunks;
-  blob;
+  mediaRecorder: any;
+  chunks: any;
+  blob: any;
 
   micStop() {
     this.mediaRecorder.stop();
     console.log("recorder stopped");
 
-    window.streamReference.getAudioTracks().forEach((track) => {
+    window.streamReference.getAudioTracks().forEach((track: any) => {
       track.stop();
     });
     window.streamReference = null;
@@ -23,19 +29,20 @@ export default class Record {
 
       this.chunks = [];
 
-      let onSuccess = (stream) => {
+      let onSuccess = (stream: any) => {
         window.streamReference = stream;
+        // @ts-ignore
         this.mediaRecorder = new MediaRecorder(window.streamReference);
         this.mediaRecorder.start(1000);
         console.log(this.mediaRecorder.state);
         console.log("recorder started");
 
-        this.mediaRecorder.ondataavailable = (e) => {
+        this.mediaRecorder.ondataavailable = (e: any) => {
           this.chunks.push(e.data);
         };
       };
 
-      let onError = (err) => {
+      let onError = (err: any) => {
         console.log("The following error occured: " + err);
       };
 

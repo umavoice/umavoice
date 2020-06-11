@@ -1,14 +1,23 @@
 import React from 'react';
 import './exercise.page.css';
 
-import Sentence from './sentence/sentence.component.jsx';
-import Actions from './actions/actions.component.jsx';
-import SpeechRecognition from '../../../components/speech-recognition-web-api/speech-recognition-web-api.component';
+import Sentence from './sentence/sentence.component';
+import Actions from './actions/actions.component';
+import SpeechRecognition from '../../speech-recognition-web-api/speech-recognition-web-api.component';
 import Record from '../../record/record.component';
 
-class Exercise extends React.Component {
+type ExerciseProps = {}
 
-  constructor(props) {
+type ExerciseState = {
+  results: Boolean[],
+  record: Record,
+  speechRecognition: SpeechRecognition,
+  isRecording: Boolean
+}
+
+class Exercise extends React.Component<ExerciseProps, ExerciseState> {
+
+  constructor(props: ExerciseProps) {
     super(props);
     this.state = {
       results: [],
