@@ -5,6 +5,7 @@ import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognition from '../../speech-recognition-web-api/speech-recognition-web-api.component';
 import Record from '../../record/record.component';
+import SendRequest from '../../send-file-request/send-file-request.component';
 
 type ExerciseProps = {}
 
@@ -12,6 +13,7 @@ type ExerciseState = {
   results: Boolean[],
   record: Record,
   speechRecognition: SpeechRecognition,
+  sendRequest: SendRequest,
   isRecording: Boolean
 }
 
@@ -23,6 +25,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       results: [],
       record: new Record(),
       speechRecognition: new SpeechRecognition(),
+      sendRequest: new SendRequest(),
       isRecording: false
     };
   }
@@ -54,6 +57,9 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     console.log(file);
     const isRecording = false;
     this.setState({ isRecording });
+
+    const sendRequest = this.state.sendRequest;
+    sendRequest.send(file);
   }
 
   setResult = () => {
