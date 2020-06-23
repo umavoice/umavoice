@@ -1,15 +1,23 @@
+import SendRequest from '../send-file-request/send-file-request.component';
+
 declare global {
     interface Window {
         streamReference: any;
     }
 }
 
-export default class Record {
+interface SpeechToText {
+  startSpeechToText(): Promise<boolean>;
+  stopSpeechToText(): void;
+  getFinalSpeech(): Promise<string>;
+}
+
+export default class Record implements SpeechToText {
   mediaRecorder: any;
   chunks: any;
   blob: any;
 
-  micStop() {
+  stopSpeechToText(): void{
     this.mediaRecorder.stop();
     console.log("recorder stopped");
 
@@ -21,7 +29,7 @@ export default class Record {
     console.log(this.chunks)
   }
 
-  micCue():Promise<boolean> {
+  startSpeechToText():Promise<boolean> {
     console.log("micCue hit");
 
     const promise:Promise<boolean>  = new Promise((resolve, reject) => {
@@ -70,10 +78,24 @@ export default class Record {
 
   mountFile() {
     const blob = new Blob(this.chunks, { type: "audio/webm; codecs=opus" });
+    this.clearChunks();
     const file = new File([blob], "webAudio.webm", {
       type: "audio/webm"
     });
-    
+
     return file;
+  }
+
+  getFinalSpeech() {
+    const promise: Promise<string> = new Promise((resolve, reject) => {
+
+      const file = this.mountFile();
+      const sendRequest = new SendRequest();
+      sendRequest.send(file); //TODO: Add a await here
+
+      resolve("nice to meet you");
+    })
+
+    return promise;
   }
 }

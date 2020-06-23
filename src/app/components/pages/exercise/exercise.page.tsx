@@ -5,7 +5,6 @@ import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognition from '../../speech-recognition-web-api/speech-recognition-web-api.component';
 import Record from '../../record/record.component';
-import SendRequest from '../../send-file-request/send-file-request.component';
 
 type ExerciseProps = {}
 
@@ -13,7 +12,6 @@ type ExerciseState = {
   results: Boolean[],
   record: Record,
   speechRecognition: SpeechRecognition,
-  sendRequest: SendRequest,
   isRecording: Boolean
 }
 
@@ -25,7 +23,6 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       results: [],
       record: new Record(),
       speechRecognition: new SpeechRecognition(),
-      sendRequest: new SendRequest(),
       isRecording: false
     };
   }
@@ -38,7 +35,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     // this.setState({ isRecording });
 
     const record = this.state.record;
-    const recordingStarted = await record.micCue();
+    const recordingStarted = await record.startSpeechToText();
 
     if (recordingStarted) {
       const isRecording = true;
@@ -55,20 +52,37 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     // this.setResult();
 
     const record = this.state.record;
-    record.micStop();
-    const file = record.mountFile();
-    console.log(file);
-    record.clearChunks();
+    record.stopSpeechToText();
+
     const isRecording = false;
     this.setState({ isRecording });
+    this.setResult();
 
-    const sendRequest = this.state.sendRequest;
-    sendRequest.send(file);
   }
 
-  setResult = () => {
-    const speechRecognition = this.state.speechRecognition;
-    const finalSpeech = speechRecognition.getFinalSpeech();
+  setResult = async () => {
+    // const speechRecognition = this.state.speechRecognition;
+    // const finalSpeech = speechRecognition.getFinalSpeech();
+
+    // console.log(
+    //   "Final Speech: %c" + finalSpeech,
+    //   "font-family:system-ui;font-size:1rem;font-weight:bold"
+    // );
+
+    // const expectedSentence = "Nice to meet you";
+    // const resultValue = (finalSpeech.toLowerCase() === expectedSentence.toLowerCase() );
+
+    // let results = this.state.results;
+    // results.push(resultValue);
+    // if (results.length > 3) {
+    //   results.shift();
+    // }
+
+    // this.setState({ results });
+
+
+    const record = this.state.record;
+    const finalSpeech = await record.getFinalSpeech();
 
     console.log(
       "Final Speech: %c" + finalSpeech,

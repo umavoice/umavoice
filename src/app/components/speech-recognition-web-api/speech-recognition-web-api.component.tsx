@@ -1,4 +1,10 @@
-export default class SpeechRecognition {
+interface SpeechToText {
+  startSpeechToText(): Promise<boolean>;
+  stopSpeechToText(): void;
+  getFinalSpeech(): string;
+}
+
+export default class SpeechRecognition implements SpeechToText {
   recognition: any;
   forceStop = false;
   finalSpeechResult = [];
@@ -12,13 +18,25 @@ export default class SpeechRecognition {
     }
   }
 
-  startSpeechToText() {
-    this.recognition.lang = "en-US";
-    this.recognition.interimResults = false;
-    this.recognition.maxAlternatives = 1;
-    this.recognition.continuous = true;
-    this.recognition.speechResult = [];
-    this.recognition.start();
+  startSpeechToText(): Promise<boolean>{
+    const promise: Promise<boolean> = new Promise((resolve, reject) => {
+
+      try {
+        this.recognition.lang = "en-US";
+        this.recognition.interimResults = false;
+        this.recognition.maxAlternatives = 1;
+        this.recognition.continuous = true;
+        this.recognition.speechResult = [];
+        this.recognition.start();
+        resolve(true);
+      }
+      catch (error) {
+        console.log(error);
+        reject(false);
+      }
+    });
+
+    return promise;
   }
 
   stopSpeechToText() {
