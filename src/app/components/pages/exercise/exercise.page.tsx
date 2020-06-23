@@ -30,7 +30,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     };
   }
 
-  startSpeech = () => {
+  startSpeech = async () => {
     // const speechRecognition = this.state.speechRecognition;
     // speechRecognition.startSpeechToText();
 
@@ -38,9 +38,12 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     // this.setState({ isRecording });
 
     const record = this.state.record;
-    record.micCue();
-    const isRecording = true;
-    this.setState({ isRecording });
+    const recordingStarted = await record.micCue();
+
+    if (recordingStarted) {
+      const isRecording = true;
+      this.setState({ isRecording });
+    }
   }
 
   stopSpeech = () => {
@@ -55,6 +58,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     record.micStop();
     const file = record.mountFile();
     console.log(file);
+    record.clearChunks();
     const isRecording = false;
     this.setState({ isRecording });
 
