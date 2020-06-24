@@ -1,17 +1,19 @@
 import React from 'react';
 import './exercise.page.css';
 
+import SpeechToText from '../../../interfaces/speech-to-text';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognition from '../../speech-recognition-web-api/speech-recognition-web-api.component';
 import Record from '../../record/record.component';
 
-type ExerciseProps = {}
+type ExerciseProps = {
+  serverSpeechValidation: boolean;
+}
 
 type ExerciseState = {
   results: Boolean[],
-  record: Record,
-  speechRecognition: SpeechRecognition,
+  speechToText: SpeechToText,
   isRecording: Boolean
 }
 
@@ -19,23 +21,25 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
   constructor(props: ExerciseProps) {
     super(props);
+
+    let speechToText;
+    if (props.serverSpeechValidation) {
+      speechToText = new Record();
+    }
+    else {
+      speechToText = new SpeechRecognition();
+    }
+
     this.state = {
       results: [],
-      record: new Record(),
-      speechRecognition: new SpeechRecognition(),
+      speechToText: speechToText,
       isRecording: false
     };
   }
 
   startSpeech = async () => {
-    // const speechRecognition = this.state.speechRecognition;
-    // speechRecognition.startSpeechToText();
-
-    // const isRecording = true;
-    // this.setState({ isRecording });
-
-    const record = this.state.record;
-    const recordingStarted = await record.startSpeechToText();
+    const speechToText = this.state.speechToText;
+    const recordingStarted = await speechToText.startSpeechToText();
 
     if (recordingStarted) {
       const isRecording = true;
@@ -44,15 +48,8 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
   }
 
   stopSpeech = () => {
-    // const speechRecognition = this.state.speechRecognition;
-    // speechRecognition.stopSpeechToText();
-
-    // const isRecording = false;
-    // this.setState({ isRecording });
-    // this.setResult();
-
-    const record = this.state.record;
-    record.stopSpeechToText();
+    const speechToText = this.state.speechToText;
+    speechToText.stopSpeechToText();
 
     const isRecording = false;
     this.setState({ isRecording });
@@ -61,28 +58,8 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
   }
 
   setResult = async () => {
-    // const speechRecognition = this.state.speechRecognition;
-    // const finalSpeech = speechRecognition.getFinalSpeech();
-
-    // console.log(
-    //   "Final Speech: %c" + finalSpeech,
-    //   "font-family:system-ui;font-size:1rem;font-weight:bold"
-    // );
-
-    // const expectedSentence = "Nice to meet you";
-    // const resultValue = (finalSpeech.toLowerCase() === expectedSentence.toLowerCase() );
-
-    // let results = this.state.results;
-    // results.push(resultValue);
-    // if (results.length > 3) {
-    //   results.shift();
-    // }
-
-    // this.setState({ results });
-
-
-    const record = this.state.record;
-    const finalSpeech = await record.getFinalSpeech();
+    const speechToText = this.state.speechToText;
+    const finalSpeech = await speechToText.getFinalSpeech();
 
     console.log(
       "Final Speech: %c" + finalSpeech,
