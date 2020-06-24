@@ -1,8 +1,4 @@
-interface SpeechToText {
-  startSpeechToText(): Promise<boolean>;
-  stopSpeechToText(): void;
-  getFinalSpeech(): string;
-}
+import SpeechToText from '../../interfaces/speech-to-text';
 
 export default class SpeechRecognition implements SpeechToText {
   recognition: any;
@@ -46,7 +42,12 @@ export default class SpeechRecognition implements SpeechToText {
   }
 
   getFinalSpeech() {
-    return this.finalSpeechResult.join(" ");
+    const promise:Promise<string> = new Promise(resolve => {
+      const finalSpeechResult = this.finalSpeechResult.join(" ");
+      resolve(finalSpeechResult);
+    })
+
+    return promise;
   }
 
   builder() {

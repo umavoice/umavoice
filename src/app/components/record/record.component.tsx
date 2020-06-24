@@ -1,16 +1,5 @@
+import SpeechToText from '../../interfaces/speech-to-text';
 import SendRequest from '../send-file-request/send-file-request.component';
-
-declare global {
-    interface Window {
-        streamReference: any;
-    }
-}
-
-interface SpeechToText {
-  startSpeechToText(): Promise<boolean>;
-  stopSpeechToText(): void;
-  getFinalSpeech(): Promise<string>;
-}
 
 export default class Record implements SpeechToText {
   mediaRecorder: any;
