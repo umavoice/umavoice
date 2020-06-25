@@ -4,8 +4,8 @@ import './exercise.page.css';
 import SpeechToText from '../../../interfaces/speech-to-text';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
-import SpeechRecognition from '../../speech-recognition-web-api/speech-recognition-web-api.component';
-import Record from '../../record/record.component';
+import SpeechRecognitionWebApi from '../../speech-recognition-web-api/speech-recognition-web-api.component';
+import MediaRecorderWebApi from '../../media-recorder/media-recorder.component';
 
 type ExerciseProps = {
   serverSpeechValidation: boolean;
@@ -24,10 +24,10 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
     let speechToText;
     if (props.serverSpeechValidation) {
-      speechToText = new Record();
+      speechToText = new MediaRecorderWebApi();
     }
     else {
-      speechToText = new SpeechRecognition();
+      speechToText = new SpeechRecognitionWebApi();
     }
 
     this.state = {

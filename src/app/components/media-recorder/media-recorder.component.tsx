@@ -1,7 +1,7 @@
 import SpeechToText from '../../interfaces/speech-to-text';
 import SendRequest from '../send-file-request/send-file-request.component';
 
-export default class Record implements SpeechToText {
+export default class MediaRecorderWebApi implements SpeechToText {
   mediaRecorder: any;
   chunks: any;
   blob: any;
