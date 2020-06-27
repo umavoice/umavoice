@@ -18,7 +18,7 @@ app.post(
     const fileName = req.file.filename;
     const filePath = __dirname + '/src/uploads/' + fileName;
     const newFilePath = filePath.replace(".webm", ".wav");
-    const conversionSuccefull = await wavConverter(fileName, filePath, newFilePath);
+    const conversionSuccefull = await wavConverter(filePath, newFilePath);
 
     if(conversionSuccefull) {
       startDeepSpeech(newFilePath);

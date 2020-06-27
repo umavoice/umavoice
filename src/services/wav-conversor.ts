@@ -1,10 +1,6 @@
 const ffmpeg = require('fluent-ffmpeg');
 
-export function wavConverter(
-  fileName: string,
-  filePath: string,
-  newFilePath: string
-  ):Promise<boolean> {
+export function wavConverter(filePath: string, newFilePath: string):Promise<boolean> {
 
   const promise: Promise<boolean> = new Promise((resolve, reject) => {
     ffmpeg(filePath)
