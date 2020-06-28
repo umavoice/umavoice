@@ -76,13 +76,13 @@ export default class MediaRecorderWebApi implements SpeechToText {
   }
 
   getFinalSpeech() {
-    const promise: Promise<string> = new Promise((resolve, reject) => {
+    const promise: Promise<string> = new Promise(async (resolve, reject) => {
 
       const file = this.mountFile();
       const sendRequest = new SendRequest();
-      sendRequest.send(file); //TODO: Add a await here
-
-      resolve("nice to meet you");
+      const result: any = await sendRequest.send(file);
+      const text = result.text;
+      resolve(text);
     })
 
     return promise;

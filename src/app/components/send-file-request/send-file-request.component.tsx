@@ -1,22 +1,26 @@
 export default class SendRequest {
 
-  send(file: any) {
+  async send(file: any):Promise<any> {
     const formData = new FormData();
     formData.append("audioData", file);
 
     const pathApi = "/api";
-
-    console.log("before fetch");
-    fetch(pathApi, {
+    const config = {
       method: "POST",
       body: formData
-    })
+    }
+
+    const promise:Promise<any> = new Promise((resolve, reject) => {
+      fetch(pathApi, config)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        resolve(data);
       })
       .catch(error => {
-        console.log(error);
+        reject(error);
       });
+    });
+
+    return promise;
   }
 }

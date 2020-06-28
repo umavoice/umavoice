@@ -1,7 +1,7 @@
 import { upload } from "./services/write-file";
 // import Utils from "./services/utils";
 import { wavConverter } from "./services/wav-conversor";
-import { startDeepSpeech } from "./services/deepspeech";
+import { getDeepSpeechResult } from "./services/deepspeech";
 
 // @ts-ignore 
 const express = require('express');
@@ -20,11 +20,15 @@ app.post(
     const newFilePath = filePath.replace(".webm", ".wav");
     const conversionSuccefull = await wavConverter(filePath, newFilePath);
 
+    let result;
     if(conversionSuccefull) {
-      startDeepSpeech(newFilePath);
+       result = await getDeepSpeechResult(newFilePath);
     }
     // const utils = new Utils();
     // utils.deleteFile(filename);
+
+    res.send(result);
+    console.log(result);
   }
 );
 

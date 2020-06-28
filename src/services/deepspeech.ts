@@ -6,7 +6,7 @@ const MemoryStream = require('memory-stream');
 const Duplex = require('stream').Duplex;
 const Wav = require('node-wav');
 
-export function startDeepSpeech(filePath: string) {
+export function getDeepSpeechResult(filePath: string): Promise<any> {
 
   console.log(__dirname);
 
@@ -55,16 +55,23 @@ export function startDeepSpeech(filePath: string) {
     }
   })).pipe(audioStream);
 
-  audioStream.on('finish', () => {
-    let audioBuffer = audioStream.toBuffer();
+  const promise:Promise<any> = new Promise((resolve, reject) => {
+    audioStream.on('finish', () => {
+      let audioBuffer = audioStream.toBuffer();
+  
+      const audioLength = (audioBuffer.length / 2) * (1 / desiredSampleRate);
+      console.log('audio length', audioLength);
+  
+      let result = model.stt(audioBuffer);
+      // let result = model.sttWithMetadata(audioBuffer);
+  
+      const dto = {
+        text: result
+      }
 
-    const audioLength = (audioBuffer.length / 2) * (1 / desiredSampleRate);
-    console.log('audio length', audioLength);
-
-    let result = model.stt(audioBuffer);
-    // let result = model.sttWithMetadata(audioBuffer);
-
-    console.log(audioBuffer);
-    console.log(result);
+      resolve(dto);
+    });
   });
+
+  return promise;
 }
