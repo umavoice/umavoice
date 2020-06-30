@@ -1,5 +1,5 @@
 import SpeechToText from '../../interfaces/speech-to-text';
-import SendRequest from '../send-file-request/send-file-request.component';
+import { sendRequest } from '../send-file-request/send-file-request.component';
 
 export default class MediaRecorderWebApi implements SpeechToText {
   mediaRecorder: any;
@@ -79,8 +79,7 @@ export default class MediaRecorderWebApi implements SpeechToText {
     const promise: Promise<string> = new Promise(async (resolve, reject) => {
 
       const file = this.mountFile();
-      const sendRequest = new SendRequest();
-      const result: any = await sendRequest.send(file);
+      const result: any = await sendRequest(file);
       const text = result.text;
       resolve(text);
     })
