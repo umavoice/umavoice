@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
     "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -23,7 +24,7 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "start-express": "tsc src/server.ts --outDir build && node build/server",
+    "start-express": "nodemon",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
