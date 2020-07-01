@@ -10,13 +10,13 @@ export function getDeepSpeechResult(filePath: string): Promise<any> {
 
   console.log(__dirname);
 
-  let modelPath =  __dirname + "/models/deepspeech-0.7.0-models.pbmm";
+  let modelPath =  __dirname + "/../../models/deepspeech-0.7.0-models.pbmm";
 
   let model = new DeepSpeech.Model(modelPath);
 
   let desiredSampleRate = model.sampleRate();
 
-  let scorerPath = __dirname + '/models/deepspeech-0.7.0-models.scorer';
+  let scorerPath = __dirname + '/../../models/deepspeech-0.7.0-models.scorer';
 
   model.enableExternalScorer(scorerPath);
 
