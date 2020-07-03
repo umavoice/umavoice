@@ -1,4 +1,5 @@
-// @ts-ignore 
+import ExerciseDto from "../interfaces/exercise-dto";
+
 const DeepSpeech = require('deepspeech');
 const Fs = require('fs');
 const Sox = require('sox-stream');
@@ -6,7 +7,7 @@ const MemoryStream = require('memory-stream');
 const Duplex = require('stream').Duplex;
 const Wav = require('node-wav');
 
-export function getDeepSpeechResult(filePath: string): Promise<any> {
+export function getDeepSpeechResult(filePath: string): Promise<ExerciseDto> {
 
   console.log(__dirname);
 
@@ -55,7 +56,7 @@ export function getDeepSpeechResult(filePath: string): Promise<any> {
     }
   })).pipe(audioStream);
 
-  const promise:Promise<any> = new Promise((resolve, reject) => {
+  const promise:Promise<ExerciseDto> = new Promise((resolve, reject) => {
     audioStream.on('finish', () => {
       let audioBuffer = audioStream.toBuffer();
   

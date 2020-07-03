@@ -1,4 +1,4 @@
-import SpeechToText from '../../interfaces/speech-to-text';
+import SpeechToText from '../../../interfaces/speech-to-text';
 
 export default class SpeechRecognitionWebApi implements SpeechToText {
   recognition: any;

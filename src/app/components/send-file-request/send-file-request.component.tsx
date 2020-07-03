@@ -1,3 +1,5 @@
+import ExerciseDto from "../../../interfaces/exercise-dto";
+
 export function sendRequest(file: any):Promise<any> {
 
   const formData = new FormData();
@@ -9,7 +11,7 @@ export function sendRequest(file: any):Promise<any> {
     body: formData
   }
 
-  const promise:Promise<any> = new Promise((resolve, reject) => {
+  const promise:Promise<ExerciseDto> = new Promise((resolve, reject) => {
     fetch(pathApi, config)
     .then(res => res.json())
     .then(data => {

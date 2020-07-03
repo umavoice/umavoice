@@ -1,5 +1,6 @@
-import SpeechToText from '../../interfaces/speech-to-text';
+import SpeechToText from '../../../interfaces/speech-to-text';
 import { sendRequest } from '../send-file-request/send-file-request.component';
+import ExerciseDto from "../../../interfaces/exercise-dto";
 
 export default class MediaRecorderWebApi implements SpeechToText {
   mediaRecorder: any;
@@ -79,7 +80,7 @@ export default class MediaRecorderWebApi implements SpeechToText {
     const promise: Promise<string> = new Promise(async (resolve, reject) => {
 
       const file = this.mountFile();
-      const result: any = await sendRequest(file);
+      const result: ExerciseDto = await sendRequest(file);
       const text = result.text;
       resolve(text);
     })

@@ -1,7 +1,7 @@
 import React from 'react';
 import './exercise.page.css';
 
-import SpeechToText from '../../../interfaces/speech-to-text';
+import SpeechToText from '../../../../interfaces/speech-to-text';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognitionWebApi from '../../speech-recognition-web-api/speech-recognition-web-api.component';
