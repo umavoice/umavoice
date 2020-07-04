@@ -3,15 +3,18 @@ import { sendRequest } from '../send-file-request/send-file-request.component';
 import ExerciseDto from "../../../interfaces/exercise-dto";
 
 export default class MediaRecorderWebApi implements SpeechToText {
-  mediaRecorder: any;
-  chunks: any;
-  blob: any;
+  mediaRecorder!: MediaRecorder;
+  chunks: BlobPart[];
+
+  constructor() {
+    this.chunks = [];
+  }
 
   stopSpeechToText(): void{
     this.mediaRecorder.stop();
     console.log("recorder stopped");
 
-    window.streamReference.getAudioTracks().forEach((track: any) => {
+    window.streamReference.getAudioTracks().forEach((track: MediaStreamTrack ) => {
       track.stop();
     });
     window.streamReference = null;
@@ -28,22 +31,21 @@ export default class MediaRecorderWebApi implements SpeechToText {
   
         this.chunks = [];
   
-        let onSuccess = (stream: any) => {
+        const onSuccess = (stream: MediaStream) => {
           window.streamReference = stream;
-          // @ts-ignore
           this.mediaRecorder = new MediaRecorder(window.streamReference);
           this.mediaRecorder.start(1000);
           console.log(this.mediaRecorder.state);
           console.log("recorder started");
   
-          this.mediaRecorder.ondataavailable = (e: any) => {
+          this.mediaRecorder.ondataavailable = (e: BlobEvent) => {
             this.chunks.push(e.data);
           };
 
           resolve(true);
         };
   
-        let onError = (err: any) => {
+        const onError = (err: DOMException) => {
           console.log("The following error occured: " + err);
 
           reject(false);
