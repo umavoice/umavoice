@@ -1,13 +1,13 @@
 
 .sentence-to-speech {
   width: 60%;
-  height: 4em;
+  height: 3em;
+  color: #191919;
   max-width: 250px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Open Sans";
   font-weight: 600;
   font-size: 1.4em;
   border-bottom: 2px solid #4f4f4f;
@@ -18,7 +18,7 @@
 .sentence-to-speech::after {
   content: "";
   width: 9px;
-  height: 40px;
+  height: 45px;
   background: white;
   position: absolute;
   right: -5px;
@@ -47,9 +47,19 @@
 .result-area .correct {
   background-image: url("../../../../../assets/images/correct.svg");
   background-color: #007B40;
+  position: relative;
+}
+
+.correct + .correct::before{
+  content: "";
+  width: 30px;
+  height: 5px;
+  background: #007b40;
+  position: absolute;
+  left: -20px;
+  bottom: 21px;
 }
 
 .result-area .incorrect {
   background-image: url("../../../../../assets/images/incorrect.svg");
-  background-color: #F2F2F2;
 }

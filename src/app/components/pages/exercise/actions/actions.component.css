@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.23), 0px 3px 4px rgba(0, 0, 0, 0.57);
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.23), 0px 3px 4px rgba(0, 0, 0, 0.57);
 }
 
 .actions-area button {
@@ -22,11 +22,11 @@
 
 .listen {
   background-image: url("../../../../../assets/images/listening.svg");
+  margin-right: 15px;
 }
 
 .talk {
   background-image: url("../../../../../assets/images/microphone.svg");
-  margin-left: 15px;
 }
 
 .stop {
