@@ -12,18 +12,17 @@
   font-size: 1.4em;
   font-family: 'Open Sans', sans-serif;
   border-bottom: 2px solid #4f4f4f;
-  border-right: 2px solid #4f4f4f;
   position: relative;
 }
 
 .sentence-to-speech::after {
   content: "";
-  width: 9px;
-  height: 45px;
-  background: white;
+  width: 2px;
+  height: 15px;
+  background: #4f4f4f;
   position: absolute;
-  right: -5px;
-  top: 0;
+  right: -2px;
+  bottom: -2px;
 }
 
 .result-area {
