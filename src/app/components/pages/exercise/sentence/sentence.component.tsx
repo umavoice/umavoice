@@ -13,11 +13,7 @@ export default function Sentence(props: SentenceProps) {
 
   return (
       <section className="sentence-area">
-        <div className="sentence-to-speech-area">
-          <button className="add"></button>
-          <span className="sentence-to-speech">{sentenceText}</span>
-          <button className="new-sentence"></button>
-        </div>
+        <span className="sentence-to-speech">{sentenceText}</span>
         <div className="result-area">
           {results.map((result, index) => {
             if (result) {

@@ -1,32 +1,9 @@
-.sentence-to-speech-area {
-  display: flex;
-  justify-content: space-between;
-  height: 4em;
-}
 
-.sentence-to-speech-area button {
-  width: 3em;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #138c8e;
-  background-size: 60%;
-  border: none;
-  box-shadow: 4px 4px;
-}
-
-.sentence-to-speech-area .add {
-  background-image: url("../../../../../assets/images/add.svg");
-}
-
-.sentence-to-speech-area .new-sentence {
-  background-image: url("../../../../../assets/images/refresh.svg");
-}
-
-.sentence-to-speech-area .sentence-to-speech {
+.sentence-to-speech {
   width: 60%;
+  height: 4em;
   max-width: 250px;
-  height: 100%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +15,7 @@
   position: relative;
 }
 
-.sentence-to-speech-area .sentence-to-speech::after {
+.sentence-to-speech::after {
   content: "";
   width: 9px;
   height: 40px;
