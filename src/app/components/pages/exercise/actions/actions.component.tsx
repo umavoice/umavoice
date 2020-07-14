@@ -18,8 +18,12 @@ export default function Actions(props: any) {
 
   return (
       <section className="actions-area">
-        <button className="listen"></button>
-        {getButton()}
+        <button className="arrow left"></button>
+        <div className="center-actions">
+          <button className="listen"></button>
+          {getButton()}
+        </div>
+        <button className="arrow"></button>
       </section>
   );
 }
