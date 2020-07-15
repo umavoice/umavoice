@@ -23,7 +23,7 @@ export default function Actions(props: any) {
           <button className="listen"></button>
           {getButton()}
         </div>
-        <button className="arrow"></button>
+        <button className="arrow right"></button>
       </section>
   );
 }
