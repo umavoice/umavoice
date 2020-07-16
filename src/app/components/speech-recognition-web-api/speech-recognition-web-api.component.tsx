@@ -24,7 +24,10 @@ export default class SpeechRecognitionWebApi implements SpeechToText {
         this.recognition.continuous = true;
         this.recognition.speechResult = [];
         this.recognition.start();
-        resolve(true);
+
+        this.recognition.onaudiostart = (event: any) => {
+          resolve(true);
+        };
       }
       catch (error) {
         console.log(error);
@@ -68,11 +71,6 @@ export default class SpeechRecognitionWebApi implements SpeechToText {
     this.recognition.onerror = (event: any) => {
       console.log("Error occurred in recognition:");
       console.log(event); //event.error
-    };
-
-    this.recognition.onaudiostart = (event: any) => {
-      //Fired when the user agent has started to capture audio.
-      console.log("SpeechRecognition.onaudiostart");
     };
 
     this.recognition.onaudioend = (event: any) => {
