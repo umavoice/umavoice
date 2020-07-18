@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.listener-area img {
+  height: 60%;
+}

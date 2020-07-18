@@ -2,6 +2,7 @@ import React from 'react';
 import './exercise.page.css';
 
 import SpeechToText from '../../../../interfaces/speech-to-text';
+import Listener from './listener/listener.component';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognitionWebApi from '../../speech-recognition-web-api/speech-recognition-web-api.component';
@@ -81,8 +82,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
   render() {
     return (
     <div className="exercise-wrapper">
-      <section className="topbar-area"></section>
-      <section className="listener-area"></section>
+      <Listener></Listener>
       <Sentence sentenceText="Nice to meet you" results={this.state.results} />
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
