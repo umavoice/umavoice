@@ -4,7 +4,7 @@ import Exercise from './components/pages/exercise/exercise.page'
 
 function App() {
   return (
-    <Exercise serverSpeechValidation={true}/>
+    <Exercise serverSpeechValidation={false}/>
   );
 }
 
