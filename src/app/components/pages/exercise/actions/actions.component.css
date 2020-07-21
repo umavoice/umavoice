@@ -11,9 +11,6 @@
 
 .actions-area button {
   border: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 44%;
 }
 
 .actions-area .center-actions {
@@ -23,29 +20,22 @@
 .actions-area .center-actions button {
   height: 5em;
   width: 7em;
-  /* background-color: #138c8e; */
   background-color: #a3cccd;
   border-radius: 4px;
   box-shadow: 0px 7px 7px -4px rgba(64, 64, 64, 0.67);
 }
 
+.actions-area .center-actions button img {
+  width: 40px;
+}
+
 .listen {
-  background-image: url("../../../../../assets/images/listening.svg");
   margin-right: 15px;
-}
-
-.talk {
-  background-image: url("../../../../../assets/images/microphone.svg");
-}
-
-.stop {
-  background-image: url("../../../../../assets/images/stop.svg");
 }
 
 .arrow {
   height: 5em;
   width: 4em;
-  background-image: url("../../../../../assets/images/arrow.svg");
   background-color: transparent;
 }
 
