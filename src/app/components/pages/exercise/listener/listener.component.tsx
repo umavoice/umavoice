@@ -12,7 +12,8 @@ export default function Listener(props: any) {
         </img>
 
         <div className="bubble">
-          <span>Hello!</span>
+          <p>That's it!</p>
+          <p>Good job!</p>
         </div>
         </div>
       </section>

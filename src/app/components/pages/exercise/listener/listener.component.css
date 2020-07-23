@@ -24,3 +24,7 @@
   border-radius: 300px 300px 400px 5px;
   box-shadow: 0px 7px 7px -7px rgba(0, 0, 0, 0.23);
 }
+
+.listener-area .listener-wrapper .bubble p {
+  margin: 2px 0;
+}
