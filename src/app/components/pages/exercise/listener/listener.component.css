@@ -27,4 +27,5 @@
 
 .listener-area .listener-wrapper .bubble p {
   margin: 2px 0;
+  width: max-content;
 }
