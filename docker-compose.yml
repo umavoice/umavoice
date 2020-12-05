@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  postgres-compose:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgresql"
+    ports:
+    - "5440:5432"
+    volumes:
+    - postgres-data:/var/lib/postgresql/data
+    - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+    - network
+
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "example@example"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin1234"
+    ports:
+    - "15432:80"
+    depends_on:
+    - postgres-compose
+    networks:
+    - network
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    external: true
