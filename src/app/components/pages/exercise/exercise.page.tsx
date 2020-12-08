@@ -5,8 +5,8 @@ import SpeechToText from '../../../../interfaces/speech-to-text';
 import Listener from './listener/listener.component';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
-import SpeechRecognitionWebApi from '../../speech-recognition-web-api/speech-recognition-web-api.component';
-import MediaRecorderWebApi from '../../media-recorder/media-recorder.component';
+import SpeechRecognitionWebApi from '../../services/speech-recognition-web-api.component';
+import MediaRecorderWebApi from '../../services/media-recorder.component';
 
 type ExerciseProps = {
   serverSpeechValidation: boolean;
