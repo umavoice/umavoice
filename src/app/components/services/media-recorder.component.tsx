@@ -1,5 +1,5 @@
 import SpeechToText from '../../../interfaces/speech-to-text';
-import { sendRequest } from '../send-file-request/send-file-request.component';
+import { sendRequest } from './send-file-request.component';
 import ExerciseDto from "../../../interfaces/exercise-dto";
 
 export default class MediaRecorderWebApi implements SpeechToText {
