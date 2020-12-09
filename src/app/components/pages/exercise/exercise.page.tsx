@@ -7,6 +7,7 @@ import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognitionWebApi from '../../services/speech-recognition-web-api.component';
 import MediaRecorderWebApi from '../../services/media-recorder.component';
+import { getPronunciation } from '../../services/wiktionary';
 
 type ExerciseProps = {
   serverSpeechValidation: boolean;
