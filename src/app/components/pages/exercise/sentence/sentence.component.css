@@ -25,6 +25,10 @@
   bottom: -2px;
 }
 
+.sentence-to-speech .word {
+  padding: 2px;
+}
+
 .result-area {
   width: 60%;
   max-width: 250px;

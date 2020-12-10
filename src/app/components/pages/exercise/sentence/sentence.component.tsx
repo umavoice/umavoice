@@ -11,9 +11,18 @@ export default function Sentence(props: SentenceProps) {
   const sentenceText = props.sentenceText;
   const results = props.results;
 
+  const sentenceWords = () => {
+    const returnValue: string[] = sentenceText.split(" ");
+    return returnValue;
+  }
+
   return (
       <section className="sentence-area">
-        <span className="sentence-to-speech">{sentenceText}</span>
+        <div className="sentence-to-speech">
+          {sentenceWords().map((word, index) => {
+            return <span key={index} className="word">{word}</span>;
+          })}
+        </div>
         <div className="result-area">
           {results.map((result, index) => {
             if (result) {
