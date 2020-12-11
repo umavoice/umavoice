@@ -1,26 +1,29 @@
 import React from 'react';
 import './sentence.component.css';
 
+type SentenceInfo = {
+  word: string,
+  phoneticValue: string
+}
+
 type SentenceProps = {
-  sentenceText: String,
+  sentenceInfo: SentenceInfo[],
   results: Boolean[]
 }
 
 export default function Sentence(props: SentenceProps) {
 
-  const sentenceText = props.sentenceText;
+  const sentenceInfo = props.sentenceInfo;
   const results = props.results;
-
-  const sentenceWords = () => {
-    const returnValue: string[] = sentenceText.split(" ");
-    return returnValue;
-  }
 
   return (
       <section className="sentence-area">
+        <div className="phonetic-area">
+          
+        </div>
         <div className="sentence-to-speech">
-          {sentenceWords().map((word, index) => {
-            return <span key={index} className="word">{word}</span>;
+          {sentenceInfo.map((wordInfo, index) => {
+            return <span key={index} className="word">{wordInfo.word}</span>;
           })}
         </div>
         <div className="result-area">

@@ -12,7 +12,9 @@ export const getPronunciation = async (word:string) => {
   const pronunciation = await fetch(endpoint+word)
   .then(response => response.text())
   .then(html => parseHTML(html))
-  .then(pronunciation => pronunciation);
+  .then(pronunciation => String(pronunciation))
+  .catch(error => {console.error(error); return ""}
+  );
 
   return pronunciation;
 }

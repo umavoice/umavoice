@@ -16,7 +16,13 @@ type ExerciseProps = {
 type ExerciseState = {
   results: Boolean[],
   speechToText: SpeechToText,
-  isRecording: Boolean
+  isRecording: Boolean,
+  sentenceInfo: SentenceInfo[],
+}
+
+type SentenceInfo = {
+  word: string,
+  phoneticValue: string
 }
 
 class Exercise extends React.Component<ExerciseProps, ExerciseState> {
@@ -35,9 +41,16 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.state = {
       results: [],
       speechToText: speechToText,
-      isRecording: false
+      isRecording: false,
+      sentenceInfo: [{word: "", phoneticValue: ""}]
     };
   }
+
+  componentWillMount() {
+    this.setSentenceInfo();
+  }
+
+  private sentenceText = "Nice to meet you";
 
   startSpeech = async () => {
     const speechToText = this.state.speechToText;
@@ -80,11 +93,24 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setState({ results });
   }
 
+  setSentenceInfo = async () => {
+    const sentenceText = this.sentenceText;
+    const words = sentenceText.split(" ");
+    let sentenceInfo: SentenceInfo[] = [];
+
+    for (const word of words) {
+      const phoneticValue = await getPronunciation(word);
+      sentenceInfo.push({word, phoneticValue});
+    }
+
+    this.setState({ sentenceInfo });
+  }
+
   render() {
     return (
     <div className="exercise-wrapper">
       <Listener></Listener>
-      <Sentence sentenceText="Nice to meet you" results={this.state.results} />
+      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.results} />
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }
