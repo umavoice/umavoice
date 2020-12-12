@@ -18,6 +18,7 @@ type ExerciseState = {
   speechToText: SpeechToText,
   isRecording: Boolean,
   sentenceInfo: SentenceInfo[],
+  wordSelected: string
 }
 
 type SentenceInfo = {
@@ -42,11 +43,12 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       results: [],
       speechToText: speechToText,
       isRecording: false,
-      sentenceInfo: [{word: "", phoneticValue: ""}]
+      sentenceInfo: [{word: "loading...", phoneticValue: ""}],
+      wordSelected: ""
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setSentenceInfo();
   }
 
@@ -106,11 +108,17 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setState({ sentenceInfo });
   }
 
+  setWordSelected = (wordSelected: string) => {
+
+    console.log(wordSelected);
+    this.setState({ wordSelected });
+  }
+
   render() {
     return (
     <div className="exercise-wrapper">
       <Listener></Listener>
-      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.results} />
+      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.results} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }
