@@ -110,7 +110,9 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
   setWordSelected = (wordSelected: WordInfo) => {
 
-    console.log(wordSelected);
+    if (wordSelected.word === this.state.wordSelected.word) {
+      wordSelected = {word: "", phoneticValue: ""};
+    }
     this.setState({ wordSelected });
   }
 
