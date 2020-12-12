@@ -17,11 +17,11 @@ type ExerciseState = {
   results: Boolean[],
   speechToText: SpeechToText,
   isRecording: Boolean,
-  sentenceInfo: SentenceInfo[],
-  wordSelected: string
+  sentenceInfo: WordInfo[],
+  wordSelected: WordInfo
 }
 
-type SentenceInfo = {
+type WordInfo = {
   word: string,
   phoneticValue: string
 }
@@ -44,7 +44,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       speechToText: speechToText,
       isRecording: false,
       sentenceInfo: [{word: "loading...", phoneticValue: ""}],
-      wordSelected: ""
+      wordSelected: {word: "", phoneticValue: ""}
     };
   }
 
@@ -52,7 +52,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setSentenceInfo();
   }
 
-  private sentenceText = "Nice to meet you";
+  private sentenceText = "Nice to meet you building";
 
   startSpeech = async () => {
     const speechToText = this.state.speechToText;
@@ -98,7 +98,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
   setSentenceInfo = async () => {
     const sentenceText = this.sentenceText;
     const words = sentenceText.split(" ");
-    let sentenceInfo: SentenceInfo[] = [];
+    let sentenceInfo: WordInfo[] = [];
 
     for (const word of words) {
       const phoneticValue = await getPronunciation(word);
@@ -108,7 +108,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setState({ sentenceInfo });
   }
 
-  setWordSelected = (wordSelected: string) => {
+  setWordSelected = (wordSelected: WordInfo) => {
 
     console.log(wordSelected);
     this.setState({ wordSelected });
