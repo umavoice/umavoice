@@ -1,6 +1,7 @@
 .exercise-wrapper {
   height: 100%;
   overflow: hidden;
+  background-color: #fffbfb;
 }
 
 .listener-area {

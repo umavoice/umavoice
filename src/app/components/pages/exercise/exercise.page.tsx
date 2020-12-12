@@ -7,6 +7,7 @@ import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognitionWebApi from '../../services/speech-recognition-web-api.component';
 import MediaRecorderWebApi from '../../services/media-recorder.component';
+import { getPronunciation } from '../../services/wiktionary';
 
 type ExerciseProps = {
   serverSpeechValidation: boolean;
@@ -15,7 +16,14 @@ type ExerciseProps = {
 type ExerciseState = {
   results: Boolean[],
   speechToText: SpeechToText,
-  isRecording: Boolean
+  isRecording: Boolean,
+  sentenceInfo: WordInfo[],
+  wordSelected: WordInfo
+}
+
+type WordInfo = {
+  word: string,
+  phoneticValue: string
 }
 
 class Exercise extends React.Component<ExerciseProps, ExerciseState> {
@@ -34,9 +42,17 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.state = {
       results: [],
       speechToText: speechToText,
-      isRecording: false
+      isRecording: false,
+      sentenceInfo: [{word: "loading...", phoneticValue: ""}],
+      wordSelected: {word: "", phoneticValue: ""}
     };
   }
+
+  componentDidMount() {
+    this.setSentenceInfo();
+  }
+
+  private sentenceText = "Nice to meet you";
 
   startSpeech = async () => {
     const speechToText = this.state.speechToText;
@@ -79,11 +95,32 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setState({ results });
   }
 
+  setSentenceInfo = async () => {
+    const sentenceText = this.sentenceText;
+    const words = sentenceText.split(" ");
+    let sentenceInfo: WordInfo[] = [];
+
+    for (const word of words) {
+      const phoneticValue = await getPronunciation(word);
+      sentenceInfo.push({word, phoneticValue});
+    }
+
+    this.setState({ sentenceInfo });
+  }
+
+  setWordSelected = (wordSelected: WordInfo) => {
+
+    if (wordSelected.word === this.state.wordSelected.word) {
+      wordSelected = {word: "", phoneticValue: ""};
+    }
+    this.setState({ wordSelected });
+  }
+
   render() {
     return (
     <div className="exercise-wrapper">
       <Listener></Listener>
-      <Sentence sentenceText="Nice to meet you" results={this.state.results} />
+      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.results} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }
