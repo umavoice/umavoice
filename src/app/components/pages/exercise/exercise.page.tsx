@@ -52,7 +52,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setSentenceInfo();
   }
 
-  private sentenceText = "Nice to meet you building";
+  private sentenceText = "Nice to meet you";
 
   startSpeech = async () => {
     const speechToText = this.state.speechToText;
