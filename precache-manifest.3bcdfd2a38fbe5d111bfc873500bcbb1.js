@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "80b0bb5b30f69f93110ddce7fbd46265",
+    "revision": "8f9ee10a3db602e3e1919d615822c012",
     "url": "/umavoice/index.html"
   },
   {
-    "revision": "a084c572d1c6f81770f8",
+    "revision": "90c1ba06f05db6dd571a",
     "url": "/umavoice/static/css/main.b51249f3.chunk.css"
   },
   {
-    "revision": "947b566e3f9e386d03d4",
-    "url": "/umavoice/static/js/2.86d10a93.chunk.js"
+    "revision": "656f86dadcdc45e18291",
+    "url": "/umavoice/static/js/2.6e3ab6ee.chunk.js"
   },
   {
     "revision": "570d362d673dab785e62d2b8563e1118",
-    "url": "/umavoice/static/js/2.86d10a93.chunk.js.LICENSE.txt"
+    "url": "/umavoice/static/js/2.6e3ab6ee.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a084c572d1c6f81770f8",
-    "url": "/umavoice/static/js/main.6b5ff0c5.chunk.js"
+    "revision": "90c1ba06f05db6dd571a",
+    "url": "/umavoice/static/js/main.6ef3b00e.chunk.js"
   },
   {
     "revision": "db6af1fb82fd0a26390d",
