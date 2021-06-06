@@ -28,29 +28,29 @@ export default function Actions(props: any) {
 
   return (
       <section className="actions-area">
-        <button className="arrow left">
+        {/* <button className="arrow left">
           <img
             src={require('../../../../../assets/images/arrow.svg')}
             alt="Previous Exercise">
           </img>
-        </button>
+        </button> */}
 
         <div className="center-actions">
-          <button className="listen">
+          {/* <button className="listen">
             <img
               src={require('../../../../../assets/images/listening.svg')}
               alt="Listen to example">
             </img>
-          </button>
+          </button> */}
           {getButton()}
         </div>
 
-        <button className="arrow right">
+        {/* <button className="arrow right">
           <img
             src={require('../../../../../assets/images/arrow.svg')}
             alt="Next Exercise">
           </img>
-        </button>
+        </button> */}
       </section>
   );
 }
