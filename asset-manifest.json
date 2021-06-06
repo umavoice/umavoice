@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/umavoice/static/css/main.b51249f3.chunk.css",
-    "main.js": "/umavoice/static/js/main.6ef3b00e.chunk.js",
-    "main.js.map": "/umavoice/static/js/main.6ef3b00e.chunk.js.map",
+    "main.css": "/umavoice/static/css/main.8e26c6e6.chunk.css",
+    "main.js": "/umavoice/static/js/main.d2cdb47a.chunk.js",
+    "main.js.map": "/umavoice/static/js/main.d2cdb47a.chunk.js.map",
     "runtime-main.js": "/umavoice/static/js/runtime-main.36fcb592.js",
     "runtime-main.js.map": "/umavoice/static/js/runtime-main.36fcb592.js.map",
     "static/js/2.6e3ab6ee.chunk.js": "/umavoice/static/js/2.6e3ab6ee.chunk.js",
     "static/js/2.6e3ab6ee.chunk.js.map": "/umavoice/static/js/2.6e3ab6ee.chunk.js.map",
     "index.html": "/umavoice/index.html",
-    "precache-manifest.3bcdfd2a38fbe5d111bfc873500bcbb1.js": "/umavoice/precache-manifest.3bcdfd2a38fbe5d111bfc873500bcbb1.js",
+    "precache-manifest.6ccc4dde6c99be4001012dd7503599f4.js": "/umavoice/precache-manifest.6ccc4dde6c99be4001012dd7503599f4.js",
     "service-worker.js": "/umavoice/service-worker.js",
-    "static/css/main.b51249f3.chunk.css.map": "/umavoice/static/css/main.b51249f3.chunk.css.map",
+    "static/css/main.8e26c6e6.chunk.css.map": "/umavoice/static/css/main.8e26c6e6.chunk.css.map",
     "static/js/2.6e3ab6ee.chunk.js.LICENSE.txt": "/umavoice/static/js/2.6e3ab6ee.chunk.js.LICENSE.txt",
     "static/media/arrow.svg": "/umavoice/static/media/arrow.607bb7c9.svg",
     "static/media/sentence.component.css": "/umavoice/static/media/incorrect.ede5bf00.svg",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.36fcb592.js",
     "static/js/2.6e3ab6ee.chunk.js",
-    "static/css/main.b51249f3.chunk.css",
-    "static/js/main.6ef3b00e.chunk.js"
+    "static/css/main.8e26c6e6.chunk.css",
+    "static/js/main.d2cdb47a.chunk.js"
   ]
 }

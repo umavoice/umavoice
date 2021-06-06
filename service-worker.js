@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/umavoice/precache-manifest.3bcdfd2a38fbe5d111bfc873500bcbb1.js"
+  "/umavoice/precache-manifest.6ccc4dde6c99be4001012dd7503599f4.js"
 );
 
 self.addEventListener('message', (event) => {
