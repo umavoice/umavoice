@@ -6,9 +6,14 @@ type WordInfo = {
   phoneticValue: string
 }
 
+type Result = {
+  value: boolean,
+  key: string
+}
+
 type SentenceProps = {
   sentenceInfo: WordInfo[],
-  results: Boolean[],
+  results: Result[],
   setWordSelected: (wordSelected: WordInfo) => void,
   wordSelected: WordInfo
 }
@@ -40,11 +45,11 @@ export default function Sentence(props: SentenceProps) {
         </div>
         <div className="result-area">
           {results.map((result, index) => {
-            if (result) {
-              return <span key={index} className="correct"></span>;
+            if (result.value) {
+              return <span key={results.length > 2 ? result.key : index} className="correct flasher"></span>;
             }
             else {
-              return <span key={index} className="incorrect"></span>;
+              return <span key={results.length > 2 ? result.key : index} className="incorrect flasher"></span>;
             }
           })}
         </div>

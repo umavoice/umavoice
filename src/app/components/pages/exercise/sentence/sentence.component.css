@@ -88,3 +88,16 @@
 .phonetic-area .unselected {
   color: #808080;
 }
+
+@keyframes flasher {
+  from {
+    transform: translateX(50px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.flasher {
+  animation: flasher 0.5s;
+}

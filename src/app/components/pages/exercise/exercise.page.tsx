@@ -13,7 +13,7 @@ type ExerciseProps = {
 }
 
 type ExerciseState = {
-  results: Boolean[],
+  result: Result[],
   speechToText: SpeechToText,
   isRecording: Boolean,
   sentenceInfo: WordInfo[],
@@ -25,6 +25,11 @@ type WordInfo = {
   phoneticValue: string
 }
 
+type Result = {
+  value: boolean,
+  key: string
+}
+
 class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
   constructor(props: ExerciseProps) {
@@ -34,7 +39,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     speechToText = new SpeechRecognitionWebApi();
 
     this.state = {
-      results: [],
+      result: [],
       speechToText: speechToText,
       isRecording: false,
       sentenceInfo: [{word: "loading...", phoneticValue: ""}],
@@ -80,15 +85,18 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     );
 
     const expectedSentence = "Nice to meet you";
-    const resultValue = (finalSpeech.toLowerCase() === expectedSentence.toLowerCase() );
+    const value = (finalSpeech.toLowerCase() === expectedSentence.toLowerCase() );
 
-    let results = this.state.results;
-    results.push(resultValue);
-    if (results.length > 3) {
-      results.shift();
+    let result = this.state.result;
+    result.push({value, key: String(Math.random())});
+    if (result.length > 3) {
+      result.shift();
+      result.forEach(element => {
+        element.key = String(Math.random());
+      });
     }
 
-    this.setState({ results });
+    this.setState({ result });
 
     if (this.state.isRecording) {
       this.setResult();
@@ -120,7 +128,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     return (
     <div className="exercise-wrapper">
       <Listener></Listener>
-      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.results} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
+      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.result} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }
