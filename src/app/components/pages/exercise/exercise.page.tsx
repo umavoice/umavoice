@@ -6,7 +6,6 @@ import Listener from './listener/listener.component';
 import Sentence from './sentence/sentence.component';
 import Actions from './actions/actions.component';
 import SpeechRecognitionWebApi from '../../services/speech-recognition-web-api.component';
-import MediaRecorderWebApi from '../../services/media-recorder.component';
 import { getPronunciation } from '../../services/wiktionary';
 
 type ExerciseProps = {
@@ -32,12 +31,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     super(props);
 
     let speechToText;
-    if (props.serverSpeechValidation) {
-      speechToText = new MediaRecorderWebApi();
-    }
-    else {
-      speechToText = new SpeechRecognitionWebApi();
-    }
+    speechToText = new SpeechRecognitionWebApi();
 
     this.state = {
       results: [],
@@ -62,6 +56,8 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       const isRecording = true;
       this.setState({ isRecording });
     }
+
+    this.setResult();
   }
 
   stopSpeech = () => {
@@ -76,7 +72,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
   setResult = async () => {
     const speechToText = this.state.speechToText;
-    const finalSpeech = await speechToText.getFinalSpeech();
+    const finalSpeech = await speechToText.getSpeech();
 
     console.log(
       "Final Speech: %c" + finalSpeech,
@@ -93,6 +89,10 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     }
 
     this.setState({ results });
+
+    if (this.state.isRecording) {
+      this.setResult();
+    }
   }
 
   setSentenceInfo = async () => {

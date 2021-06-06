@@ -3,7 +3,6 @@ import SpeechToText from '../../../interfaces/speech-to-text';
 export default class SpeechRecognitionWebApi implements SpeechToText {
   recognition: any;
   forceStop = false;
-  finalSpeechResult = [];
 
   constructor() {
     // @ts-ignore
@@ -39,30 +38,30 @@ export default class SpeechRecognitionWebApi implements SpeechToText {
   }
 
   stopSpeechToText() {
-    this.finalSpeechResult = this.recognition.speechResult;
     this.forceStop = true;
     this.recognition.abort();
   }
 
-  getFinalSpeech() {
+  getSpeech() {
     const promise:Promise<string> = new Promise(resolve => {
-      const finalSpeechResult = this.finalSpeechResult.join(" ");
-      resolve(finalSpeechResult);
+      this.recognition.onresult = function (event: any) {
+      
+        const speechResult = event.results[event.results.length -1][0].transcript.toLowerCase();
+        const confidente = event.results[event.results.length -1][0].confidence
+        this.speechResult.push(...speechResult.trim().split(" "));
+        console.log(this.speechResult);
+  
+        console.log("Confidence: " + confidente);
+
+        resolve(this.speechResult.join(" "));
+        this.speechResult = [];
+      };
     })
 
     return promise;
   }
 
   builder() {
-    this.recognition.onresult = function (event: any) {
-      
-      const speechResult = event.results[event.results.length -1][0].transcript.toLowerCase();
-      const confidente = event.results[event.results.length -1][0].confidence
-      this.speechResult.push(...speechResult.trim().split(" "));
-      console.log(this.speechResult);
-
-      console.log("Confidence: " + confidente);
-    };
 
     this.recognition.onspeechend = () => {
       this.recognition.stop();
