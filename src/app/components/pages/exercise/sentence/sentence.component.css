@@ -89,7 +89,7 @@
   color: #808080;
 }
 
-@keyframes flasher {
+@keyframes slide {
   from {
     transform: translateX(50px);
   }
@@ -98,6 +98,6 @@
   }
 }
 
-.flasher {
-  animation: flasher 0.5s;
+.slide {
+  animation: slide 0.5s;
 }

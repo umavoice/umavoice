@@ -17,7 +17,8 @@ type ExerciseState = {
   speechToText: SpeechToText,
   isRecording: Boolean,
   sentenceInfo: WordInfo[],
-  wordSelected: WordInfo
+  wordSelected: WordInfo,
+  speechListenerStatus: string
 }
 
 type WordInfo = {
@@ -43,7 +44,8 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
       speechToText: speechToText,
       isRecording: false,
       sentenceInfo: [{word: "loading...", phoneticValue: ""}],
-      wordSelected: {word: "", phoneticValue: ""}
+      wordSelected: {word: "", phoneticValue: ""},
+      speechListenerStatus: ""
     };
   }
 
@@ -98,6 +100,26 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
     this.setState({ result });
 
+    let speechListenerStatus = value ? "correct" : "incorrect";
+
+    if (this.state.result.length === 3) {
+      let countCorrectResults = 0;
+      for (const element of this.state.result) {
+        if (element.value) {
+          countCorrectResults++;
+        }
+      }
+
+      if (countCorrectResults === 3) {
+        console.log("Done");
+        this.stopSpeech();
+
+        speechListenerStatus = "finalspeech";
+      }
+    }
+
+    this.setState({ speechListenerStatus });
+
     if (this.state.isRecording) {
       this.setResult();
     }
@@ -124,10 +146,16 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     this.setState({ wordSelected });
   }
 
+  getSpeechBubbleinfo() {
+
+
+
+  }
+
   render() {
     return (
     <div className="exercise-wrapper">
-      <Listener></Listener>
+      <Listener speechListenerStatus={this.state.speechListenerStatus}></Listener>
       <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.result} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);

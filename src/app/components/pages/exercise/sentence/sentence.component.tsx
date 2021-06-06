@@ -46,10 +46,10 @@ export default function Sentence(props: SentenceProps) {
         <div className="result-area">
           {results.map((result, index) => {
             if (result.value) {
-              return <span key={results.length > 2 ? result.key : index} className="correct flasher"></span>;
+              return <span key={results.length > 2 ? result.key : index} className="correct slide"></span>;
             }
             else {
-              return <span key={results.length > 2 ? result.key : index} className="incorrect flasher"></span>;
+              return <span key={results.length > 2 ? result.key : index} className="incorrect slide"></span>;
             }
           })}
         </div>
