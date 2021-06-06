@@ -1,28 +1,26 @@
 {
   "files": {
-    "main.css": "/umavoice/static/css/main.e3723fe5.chunk.css",
-    "main.js": "/umavoice/static/js/main.d2cdb47a.chunk.js",
-    "main.js.map": "/umavoice/static/js/main.d2cdb47a.chunk.js.map",
+    "main.css": "/umavoice/static/css/main.52a22239.chunk.css",
+    "main.js": "/umavoice/static/js/main.a8424e4b.chunk.js",
+    "main.js.map": "/umavoice/static/js/main.a8424e4b.chunk.js.map",
     "runtime-main.js": "/umavoice/static/js/runtime-main.36fcb592.js",
     "runtime-main.js.map": "/umavoice/static/js/runtime-main.36fcb592.js.map",
-    "static/js/2.6e3ab6ee.chunk.js": "/umavoice/static/js/2.6e3ab6ee.chunk.js",
-    "static/js/2.6e3ab6ee.chunk.js.map": "/umavoice/static/js/2.6e3ab6ee.chunk.js.map",
+    "static/js/2.f85d0191.chunk.js": "/umavoice/static/js/2.f85d0191.chunk.js",
+    "static/js/2.f85d0191.chunk.js.map": "/umavoice/static/js/2.f85d0191.chunk.js.map",
     "index.html": "/umavoice/index.html",
-    "precache-manifest.d8d6742a7ebdcafc19dd2a279e74b2a3.js": "/umavoice/precache-manifest.d8d6742a7ebdcafc19dd2a279e74b2a3.js",
+    "precache-manifest.a5c5e55a107915da8c5718174d1f47b5.js": "/umavoice/precache-manifest.a5c5e55a107915da8c5718174d1f47b5.js",
     "service-worker.js": "/umavoice/service-worker.js",
-    "static/css/main.e3723fe5.chunk.css.map": "/umavoice/static/css/main.e3723fe5.chunk.css.map",
-    "static/js/2.6e3ab6ee.chunk.js.LICENSE.txt": "/umavoice/static/js/2.6e3ab6ee.chunk.js.LICENSE.txt",
-    "static/media/arrow.svg": "/umavoice/static/media/arrow.607bb7c9.svg",
+    "static/css/main.52a22239.chunk.css.map": "/umavoice/static/css/main.52a22239.chunk.css.map",
+    "static/js/2.f85d0191.chunk.js.LICENSE.txt": "/umavoice/static/js/2.f85d0191.chunk.js.LICENSE.txt",
     "static/media/sentence.component.css": "/umavoice/static/media/incorrect.ede5bf00.svg",
     "static/media/listener-one.svg": "/umavoice/static/media/listener-one.2c38ffbb.svg",
-    "static/media/listening.svg": "/umavoice/static/media/listening.520d9eb6.svg",
     "static/media/microphone.svg": "/umavoice/static/media/microphone.28cb80de.svg",
     "static/media/stop.svg": "/umavoice/static/media/stop.6af5a914.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.36fcb592.js",
-    "static/js/2.6e3ab6ee.chunk.js",
-    "static/css/main.e3723fe5.chunk.css",
-    "static/js/main.d2cdb47a.chunk.js"
+    "static/js/2.f85d0191.chunk.js",
+    "static/css/main.52a22239.chunk.css",
+    "static/js/main.a8424e4b.chunk.js"
   ]
 }

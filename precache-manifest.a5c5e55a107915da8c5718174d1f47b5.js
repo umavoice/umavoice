@@ -1,31 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "be42dfcbacf7311c5896353ea545c85b",
+    "revision": "e9a0daeb5aaf6a7efe145b98e69f764c",
     "url": "/umavoice/index.html"
   },
   {
-    "revision": "4a4aa424b2b27525302e",
-    "url": "/umavoice/static/css/main.e3723fe5.chunk.css"
+    "revision": "b07345229f9be018da6c",
+    "url": "/umavoice/static/css/main.52a22239.chunk.css"
   },
   {
-    "revision": "656f86dadcdc45e18291",
-    "url": "/umavoice/static/js/2.6e3ab6ee.chunk.js"
+    "revision": "db0b41f3bc521b28e126",
+    "url": "/umavoice/static/js/2.f85d0191.chunk.js"
   },
   {
     "revision": "570d362d673dab785e62d2b8563e1118",
-    "url": "/umavoice/static/js/2.6e3ab6ee.chunk.js.LICENSE.txt"
+    "url": "/umavoice/static/js/2.f85d0191.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4a4aa424b2b27525302e",
-    "url": "/umavoice/static/js/main.d2cdb47a.chunk.js"
+    "revision": "b07345229f9be018da6c",
+    "url": "/umavoice/static/js/main.a8424e4b.chunk.js"
   },
   {
     "revision": "db6af1fb82fd0a26390d",
     "url": "/umavoice/static/js/runtime-main.36fcb592.js"
-  },
-  {
-    "revision": "607bb7c9aee5ee5158a619fed1df47cf",
-    "url": "/umavoice/static/media/arrow.607bb7c9.svg"
   },
   {
     "revision": "214e768f2584b66e0c8612729fecd87e",
@@ -38,10 +34,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2c38ffbb0447c8d66a0f06ab6dc1fe41",
     "url": "/umavoice/static/media/listener-one.2c38ffbb.svg"
-  },
-  {
-    "revision": "520d9eb6374db1e03a0a8384dad7c291",
-    "url": "/umavoice/static/media/listening.520d9eb6.svg"
   },
   {
     "revision": "28cb80de3faa26a2601bf5282866d869",
