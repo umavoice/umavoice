@@ -14,6 +14,7 @@ type ExerciseProps = {
 
 type ExerciseState = {
   result: Result[],
+  useKey: boolean,
   speechToText: SpeechToText,
   isRecording: Boolean,
   sentenceInfo: WordInfo[],
@@ -41,6 +42,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
 
     this.state = {
       result: [],
+      useKey: false,
       speechToText: speechToText,
       isRecording: false,
       sentenceInfo: [{word: "loading...", phoneticValue: ""}],
@@ -92,6 +94,8 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     let result = this.state.result;
     result.push({value, key: String(Math.random())});
     if (result.length > 3) {
+      const useKey = true;
+      this.setState({ useKey });
       result.shift();
       result.forEach(element => {
         element.key = String(Math.random());
@@ -114,7 +118,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
         console.log("Done");
         this.stopSpeech();
 
-        speechListenerStatus = "finalspeech";
+        speechListenerStatus = "all-correct";
       }
     }
 
@@ -156,7 +160,7 @@ class Exercise extends React.Component<ExerciseProps, ExerciseState> {
     return (
     <div className="exercise-wrapper">
       <Listener speechListenerStatus={this.state.speechListenerStatus}></Listener>
-      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.result} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
+      <Sentence sentenceInfo={this.state.sentenceInfo} results={this.state.result} useKey={this.state.useKey} speechListenerStatus={this.state.speechListenerStatus} setWordSelected={this.setWordSelected} wordSelected={this.state.wordSelected}/>
       <Actions record={this.startSpeech} stop={this.stopSpeech} isRecording={this.state.isRecording}/>
     </div>);
   }

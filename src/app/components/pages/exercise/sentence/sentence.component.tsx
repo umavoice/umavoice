@@ -14,6 +14,8 @@ type Result = {
 type SentenceProps = {
   sentenceInfo: WordInfo[],
   results: Result[],
+  useKey: boolean,
+  speechListenerStatus: string,
   setWordSelected: (wordSelected: WordInfo) => void,
   wordSelected: WordInfo
 }
@@ -33,6 +35,24 @@ export default function Sentence(props: SentenceProps) {
     return <span className="unselected"> Tap the word for more info </span>;
   }
 
+  const getResultButton = (result: Result, index: number) => {
+
+    let className = "slide ";
+
+    if (result.value) {
+      className += "correct ";
+    }
+    else {
+      className += "incorrect ";
+    }
+
+    if (props.speechListenerStatus === "all-correct") {
+      className += "all-correct";
+    }
+
+    return <span key={ props.useKey ? result.key : index} className={className}></span>;
+  }
+
   return (
       <section className="sentence-area">
         <div className="phonetic-area">{phoneticArea()}</div>
@@ -45,12 +65,7 @@ export default function Sentence(props: SentenceProps) {
         </div>
         <div className="result-area">
           {results.map((result, index) => {
-            if (result.value) {
-              return <span key={results.length > 2 ? result.key : index} className="correct slide"></span>;
-            }
-            else {
-              return <span key={results.length > 2 ? result.key : index} className="incorrect slide"></span>;
-            }
+            return getResultButton(result, index);
           })}
         </div>
       </section>

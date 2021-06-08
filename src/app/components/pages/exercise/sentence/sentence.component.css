@@ -62,7 +62,7 @@
   position: relative;
 }
 
-.correct + .correct::before{
+.all-correct + .correct::before{
   content: "";
   width: 30px;
   height: 5px;
@@ -70,6 +70,7 @@
   position: absolute;
   left: -20px;
   bottom: 21px;
+  animation: slide 0s;
 }
 
 .result-area .incorrect {
