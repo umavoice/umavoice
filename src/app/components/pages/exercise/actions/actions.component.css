@@ -43,3 +43,21 @@
 .arrow.left {
   transform: rotate(180deg);
 }
+
+.actions-area .center-actions button.stop {
+  background-color: #2E2E2E;
+  animation: rotate 0.5s;
+}
+
+.actions-area .center-actions button.stop img {
+  filter: invert(100%) sepia(1%) saturate(2469%) hue-rotate(86deg) brightness(118%) contrast(79%);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(45deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
