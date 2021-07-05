@@ -1,5 +1,0 @@
-{ 
-  "watch": ["src"],
-  "exec": "clear && tsc src/server.ts --outDir build && node build/server",
-  "ext": "js, json, ts, proto"
-}
